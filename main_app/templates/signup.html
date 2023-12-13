@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Form</title>
+</head>
+<body>
+    <h1>Signup Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button id="passwordToggle">Show Password</button>
+        <div>
+        <input type="submit" value="Submit">
+        </div>
+    </form>
+    <script>
+        function togglePasswordVisibility() {
+           var passwordInput = document.getElementById("id_password");
+           if (passwordInput.type === "password") {
+             passwordInput.type = "text";
+           } else {
+             passwordInput.type = "password";
+           }
+        }
+       </script>
+</body>
+</html>
