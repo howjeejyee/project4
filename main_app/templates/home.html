@@ -1,35 +1,6 @@
-{% extends "base.html" %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{% block title %}Home{% endblock %}</title>
-</head>
-<body>
-    {% block content %}
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <h2>Login</h2>
-            --login details--
-            <p>Don't have account yet? <a href="{% url 'signup' %}">Click here!</a></p>
-        </div>
-    </div>
+{% extends 'base.html' %}
+{% block content %}
 
-    <script>
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("myBtn");
-        var span = document.getElementsByClassName("close")[0];
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-    {% endblock %}
-</body>
-</html>
+<h1>Home Page</h1>
+
+{% endblock %}
