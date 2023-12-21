@@ -14,6 +14,9 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+def start(request):
+    return render(request, 'start.html')
+
 def signup(request):
     error_message = ''
     form = UserCreationForm(request.POST) 
@@ -60,4 +63,5 @@ def start(request):
     return render(request, 'start.html', {'form': form, 'characters': characters})
 
 def start_game(request):
-    return run_game(request)
+    run_game(request)
+    return redirect('start')
