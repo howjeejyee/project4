@@ -24,7 +24,13 @@
 
 ![Start image](/main_app/public/start.png)
 
-![Game image](/main_app/public/)
+![Game image1](/main_app/public/game1.png)
+
+![Game image2](/main_app/public/game2.png)
+
+![Game image3](/main_app/public/game3.png)
+
+![Game image4](/main_app/public/game4.png)
 
 # Future Plans
 

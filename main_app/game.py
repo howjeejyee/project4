@@ -212,8 +212,8 @@ def run_game(request):
        alive_enemies = 0
        for enemies in enemy:
           if enemies.alive == True:
-             alive_bandits += 1
-       if alive_bandits == 0:
+             alive_enemies += 1
+       if alive_enemies == 0:
           game_over = 1
 
        pygame.display.update()
