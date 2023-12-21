@@ -7,6 +7,7 @@ colorama==0.4.6
 Django==5.0
 django-heroku==0.3.1
 Flask==3.0.0
+gunicorn==21.2.0
 itsdangerous==2.1.2
 Jinja2==3.1.2
 jmespath==1.0.1
