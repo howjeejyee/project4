@@ -2,24 +2,29 @@
 {% block content %}
 
 <h1>Select Your Character</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="cc" type="submit">Create Character</button>
-    </form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<form method="post" action="{% url 'start' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="cc" type="submit">Create Character</button>
+</form>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<h2>Your Characters:</h2>
+{% for character in characters %}
+    <p>Username: {{ character.username }}</p>
+    <p>Job: {{ character.job }}</p>
+    <p>Level: {{ character.level }}</p>
+    <p>Gold: {{ character.gold }}</p>
     <hr>
-    <br>
-    <br>
-    <button class="startgame" onclick="startGame()">Start Game</button>
-    <script>
-        function startGame() {
-            window.location.href = "/start_game/";
-        }
-    </script>
+{% endfor %}
+<button class="startgame" onclick="startGame()">Start Game</button>
+<script>
+    function startGame() {
+        window.location.href = "/start_game/";
+    }
+</script>
 
 {% endblock %}

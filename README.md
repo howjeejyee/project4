@@ -18,11 +18,11 @@
 
 # Screenshots
 
-![Homepage image](/public/)
+![Homepage image](/public/home.png)
 
-![Login image](/public/)
+![Login image](/public/login.png)
 
-![Start image](/public/)
+![Start image](/public/start.png)
 
 ![Game image](/public/)
 
