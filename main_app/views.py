@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Character
 from .forms import CharacterCreationForm
+from .game import run_game
 import pygame
 
 def home(request):
@@ -47,11 +48,10 @@ def start(request):
     if request.method == 'POST':
         form = CharacterCreationForm(request.POST)
         if form.is_valid():
-            # Associate the character with the current user
             character = form.save(commit=False)
             character.user = request.user
             character.save()
-            return redirect('start')  # Redirect to the same page after form submission
+            return redirect('start') 
 
     else:
         form = CharacterCreationForm()
@@ -60,20 +60,4 @@ def start(request):
     return render(request, 'start.html', {'form': form, 'characters': characters})
 
 def start_game(request):
-    pygame.init()
-    screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption('Game')
-    clock = pygame.time.Clock()
-    running = True
-
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        clock.tick(60)
-        pygame.display.flip()
-
-    pygame.quit()
-
-    return render(request, 'start.html')
+    return run_game(request)

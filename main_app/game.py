@@ -1,37 +1,40 @@
 import pygame
+from django.shortcuts import render
 
-pygame.init()
+def run_game(request):
+    pygame.init()
 
-clock = pygame.time.Clock()
-fps = 60
+    clock = pygame.time.Clock()
+    fps = 60
+    
+    game_panel = 200
+    screen_width = 800
+    screen_height = 400 + game_panel
 
-game_panel = 200
-screen_width = 800
-screen_height = 400 + game_panel
+    screen = pygame.display.set_mode((screen_width, screen_height))
+    pygame.display.set_caption('Stick, League of Adventure')
+                               
+    background_image = pygame.image.load('main_app/static/image/background.jpg').convert_alpha()
+    panel_image = pygame.image.load('main_app/static/image/gamepanel.jpg').convert_alpha()
 
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('Battle')
+    def background():
+       screen.blit(background_image, (0,0))
+    
+    def gamepanel():
+        screen.blit(panel_image, (0, screen_height - game_panel + 80))
 
-background_image = pygame.image.load('img/background.jpg').convert_alpha()
-panel_image = pygame.image.load('img/gamepanel.jpg').convert_alpha()
+    run = True
+    while run:
+       for event in pygame.event.get():
+          if event.type == pygame.QUIT:
+             run = False
 
-def background():
-  screen.blit(background_image, (50, 0))
+       clock.tick(fps)
+       background()
+       gamepanel()
 
-def gamepanel():
-  screen.blit(panel_image, (50, screen_height - game_panel))
-  
-run = True
-while run:
+       pygame.display.update()
 
-  clock.tick(fps)
-  background()
-  gamepanel()
-  
-  for event in pygame.event.get():
-      if event.type == pygame.QUIT:
-          run = False
+    pygame.quit()
 
-  pygame.display.update()
-
-pygame.quit()
+    return render(request, 'start.html')
