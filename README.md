@@ -18,13 +18,13 @@
 
 # Screenshots
 
-![Homepage image](/public/home.png)
+![Homepage image](/main_app/public/home.png)
 
-![Login image](/public/login.png)
+![Login image](/main_app/public/login.png)
 
-![Start image](/public/start.png)
+![Start image](/main_app/public/start.png)
 
-![Game image](/public/)
+![Game image](/main_app/public/)
 
 # Future Plans
 
