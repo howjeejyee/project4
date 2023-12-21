@@ -49,4 +49,4 @@ def start_game(request):
 
     pygame.quit()
 
-    return HttpResponse("Game started")
+    return render(request, 'start.html')

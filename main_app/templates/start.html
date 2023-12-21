@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Start Page</h1>
+<h1>Select Your Character</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Create Character</button>
+        <button class="cc" type="submit">Create Character</button>
     </form>
-    <button onclick="startGame()">Start Game</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <button class="startgame" onclick="startGame()">Start Game</button>
     <script>
         function startGame() {
             window.location.href = "/start_game/";
