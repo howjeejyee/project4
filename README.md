@@ -8,7 +8,9 @@
 * Python
 * Pygame
 * Django
+* HTML
 * CSS
+* Adobe Photoshop
 
 # Guidelines
 In **Stick, League of Adventure**, player must signup an account to login on the website before they can start the game. Player then should create their character after login and click on the Start Game button to startup the game. In the game, player can use their mouse to select which enemy to attack, the number that show on screen indicates different meaning. Red colour number means damage taken, where else green colour number means healing. Player will have 3 potions to heal them back to continue the fight. The objectives of this game is to kill the enemies. Below are some codes that used in this project.
