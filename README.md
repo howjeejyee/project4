@@ -1,4 +1,4 @@
-# The Adventure Of Stick
+# Stick, League of Adventure
 
 # Project Description
 **Stick, League of Adventure** is a is a Turn-Based RPG game that required player to choose their action and fight enemy to go on his adventure. Player will control one of the stickman to fight off enemy and kill the end game boss to win the game! Hope you are ready for this game, please click the [link](https://project4-stick-turn-base-rpg-a7fd73f05e83.herokuapp.com/) here to head on to the webpage.
