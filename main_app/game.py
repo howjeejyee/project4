@@ -19,7 +19,7 @@ def run_game(request):
     current_character = 1
     total_characters = 3
     action_cooldown = 0
-    action_wait = 90
+    action_wait = 60
     attack = False
     potion = False
     potion_heal = 20
@@ -35,7 +35,10 @@ def run_game(request):
     background_image = pygame.image.load('main_app/static/image/background.jpg').convert_alpha()
     panel_image = pygame.image.load('main_app/static/image/gamepanel.jpg').convert_alpha()
     mouse_image = pygame.image.load('main_app/static/image/mouse.png').convert_alpha()
+    victory_image = pygame.image.load('main_app/static/image/victory.png').convert_alpha()
+    defeat_image = pygame.image.load('main_app/static/image/defeat.png').convert_alpha()
     potion_image = pygame.image.load('main_app/static/image/potion.jpg').convert_alpha()
+    restart_image = pygame.image.load('main_app/static/image/restart.png').convert_alpha()
 
 
     def text(text, font, text_col, x, y):
@@ -58,6 +61,7 @@ def run_game(request):
           self.maxhp = maxhp
           self.hp = maxhp
           self.str = str
+          self.start_potions = potions
           self.potions = potions
           self.alive = True
           image = pygame.image.load(f'main_app/static/image/{self.name}/char1.png')
@@ -77,8 +81,19 @@ def run_game(request):
           damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), red)
           damage_text_group.add(damage_text)
 
+       def reset(self):
+          self.alive = True
+          self.potions = self.start_potions
+          self.hp = self.maxhp
+          self.update_time = pygame.time.get_ticks()
+
+
        def draw(self):
-          screen.blit(self.image, self.rect)
+          if self.alive:
+            screen.blit(self.image, self.rect)
+
+       def is_visible(self):
+          return self.alive and self.hp > 0
    
 
     class HealthBar():
@@ -126,6 +141,7 @@ def run_game(request):
     boss_healthbar = HealthBar(515, screen_height - game_panel + 155, boss.hp, boss.maxhp)
 
     potion_button = Button(screen, 270, screen_height - game_panel + 112, potion_image, 64, 64)
+    restart_button = Button(screen, 355, 350, restart_image, 75, 75)
 
 
     run = True
@@ -144,9 +160,13 @@ def run_game(request):
        warrior_healthbar.draw(warrior.hp)
        soldier_healthbar.draw(soldier.hp)
        boss_healthbar.draw(boss.hp)
-       warrior.draw()
+       
+       if warrior.is_visible():
+          warrior.draw()
+
        for enemies in enemy:
-          enemies.draw()
+          if enemies.is_visible():
+            enemies.draw()
       
        damage_text_group.update()
        damage_text_group.draw(screen)
@@ -215,6 +235,19 @@ def run_game(request):
              alive_enemies += 1
        if alive_enemies == 0:
           game_over = 1
+
+       if game_over != 0:
+          if game_over == 1:
+             screen.blit(victory_image, (275,130))
+          if game_over == -1:
+             screen.blit(defeat_image, (270,130))
+          if restart_button.draw():
+             warrior.reset()
+             for enemies in enemy:
+                enemies.reset()
+             current_character = 1
+             action_cooldown
+             game_over = 0
 
        pygame.display.update()
 
